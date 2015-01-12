@@ -1,3 +1,4 @@
 # Math Textbook
 
-## Chapter 1: [First-order Logic](first-order-logic.md)
+## [Basic Logic](logic.md)
+## [First-order Logic](first-order-logic.md)
