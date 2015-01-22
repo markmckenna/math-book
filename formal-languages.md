@@ -1,0 +1,21 @@
+A formal language is a language that is defined and operates by a very specific set of rules which it always follows.  this contrasts a *natural language*, like English, which is pretty soft-edged and doesn't really follow its own rules all that closely, and is ever-changing.
+
+Like a natural language, a formal language has an *alphabet* describing the symbols that can be used to form words and sentences (known as *formulae*), which may be infinite.  There's usually also a set of rules (a *grammar*) that restricts the ways these symbols can be arranged into formulae.  Sometimes the grammar is as simple as a list of valid sentences, but more often it's a system that allows for the construction of an infinite variety of formulae.  The combination of alphabet and grammar makes up the language's *syntax*.  Formulae that fit the syntax properly are called *well formed formulae* (or 'wffs' for short).
+
+Say you've been given a big list of symbols (a *string*).  One thing you might want to do with this is figure out if it fits a particular formal language or not.  In order to do that, you could first scan the string, and make sure it doesn't reference any symbols that aren't in the alphabet of the formal language--if it does, you know right away it isn't from of that language.  This process is called *scanning*.
+
+The next thing you would do is take the grammar of the language, and try to find ways in which the string is internally structured to match the grammar.  For example, one grammatical rule might say that a string like "(X)" is well formed, where 'X' is any other grammatically correct string--to match this rule you'd look for pairs of brackets, then check to see if the string between them is also well formed.  If it is, then you can confirm that the string itself is also well formed.  There are many ways to organize grammars, and equally many ways to check whether a string matches the rules in the grammar--this process is a science unto itself.
+
+The act of confirming that a string is grammatically correct is called *parsing*, which in its simplest form is just a yes/no proposition--either the string parses according to the rules of the language, or it does not.  Often you'll want to do more than that, in which case you'd attach some kind of reasoning or transformative logic to the rules of the grammar which yields information in some other form: this process is called *interpreting*.  The interpretation is not considered a part of the language directly--some well formed formulae will have no interpretation while others will have many interpretations; often the interpretation depends on the context.
+
+Let's work with a simple example.  Let our "alphabet" contain the symbols 'and', 'or', 'xor', 'implies', 'not', '(', ')', and the uppercase letters 'A' through 'Z' (note in particular that, in this language, 'AND' is one alphabetical character--not a sequence of characters).  The grammatical rules are as follows:
+	* 'and', 'or', 'xor' and 'implies' make up the group of 'logical connectives';
+	* The lowercase letters make up the group of 'facts';
+	* Any fact by itself is a wff;
+	* Any expression like 'not wff' is also a wff;
+	* Any wff can be enclosed in brackets and is still a wff; and 
+	* Any expression like 'wff connective wff' is also a wff.
+
+Based on the above rules, you can see that "A implies B" is in the language; as is "A" by itself.  You can also parse "(A and B) implies (C or (D and not E))" with some work.  You can also see that "A B" is not well formed; nor is "C not" or "( (", or "" (the empty string; though many logical languages will include the empty string as a special kind of well formed formula).
+
+Note that what A, B, C, or even 'and' and 'or' actually *mean* is not included in the language.  An interpretation might assign particular logical assertions to the fact symbols, and truth-devising rules to the logical connectives and 'not', which can then be used during the parsing process to derive some kind of truth value (or just a simplified expression) from the original string.  It's pretty obvious in this example that that's what the language author intends to do; but it's important to remember that the ability to use such languages to solve problems and do work is outside of the scope of what makes it a formal language.
